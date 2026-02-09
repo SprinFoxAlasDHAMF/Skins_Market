@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\RegisterController;
+use App\Http\Controllers\Login\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,12 @@ use App\Http\Controllers\Login\RegisterController;
 |
 */
 
+//Register
+Route::get('Login/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('Login/register', [RegisterController::class, 'register'])->name('Login.register');
 
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
+//Login
+Route::get('Login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('Login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('Logout', [LoginController::class, 'logout'])->name('logout');
+

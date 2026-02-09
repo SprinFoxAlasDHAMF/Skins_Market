@@ -32,16 +32,16 @@ class RegisterController extends Controller
 
         // Crear el usuario en la base de datos
         $user = User::create([
-            'name' => $request->name,
+            'nombre' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), 
+            'contraseña' => Hash::make($request->password), 
         ]);
 
         // Autenticamos al usuario después de registrarlo
         auth()->login($user);
 
         // Redirigir a una página de éxito(aun por crear)
-        return redirect()->route('home'); 
+        return redirect()->route('login'); 
     }
 }
 

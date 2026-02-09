@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('factura', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->date('fecha');
             $table->decimal('total', 10, 2);
             $table->string('metodo_pago');
