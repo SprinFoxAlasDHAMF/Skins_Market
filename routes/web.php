@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\RegisterController;
 use App\Http\Controllers\Login\LoginController;
-
+use App\Http\Controllers\UserPerfilController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +24,8 @@ Route::get('Login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('Login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('Logout', [LoginController::class, 'logout'])->name('logout');
 
+//Perfil
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [UserPerfilController::class, 'show']);
+    Route::post('/perfil', [UserPerfilController::class, 'update']);
+});
